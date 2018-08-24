@@ -110,6 +110,10 @@ class GiftedChat extends React.Component {
     this.setTextFromProp(text);
   }
 
+  componentDidMount() {
+    this.props.onRef(this)
+  }
+
   componentWillUnmount() {
     this.setIsMounted(false);
   }
@@ -504,6 +508,7 @@ GiftedChat.childContextTypes = {
 };
 
 GiftedChat.defaultProps = {
+  onRef: () => {},
   messages: [],
   text: undefined,
   placeholder: DEFAULT_PLACEHOLDER,
@@ -560,6 +565,7 @@ GiftedChat.defaultProps = {
 };
 
 GiftedChat.propTypes = {
+  onRef: PropTypes.func,
   messages: PropTypes.arrayOf(PropTypes.object),
   text: PropTypes.string,
   placeholder: PropTypes.string,
